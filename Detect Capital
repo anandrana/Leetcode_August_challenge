@@ -1,0 +1,20 @@
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        s1=word
+        s2=word
+        s3=word
+        s1=s1.upper()
+        s2=s2.lower()
+        
+        # print(word,s1,s2)
+        if(s1==word):
+            return True
+        if(s2==word):
+            return True
+        
+        s3=s1.capitalize()
+        if(s3==word):
+            return True
+        
+        return False
+        
