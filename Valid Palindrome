@@ -1,0 +1,19 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        
+        list1=list(s)
+        list2=[]
+        for i in range(len(list1)):
+            if((list1[i]>='a' and list1[i]<='z') or (list1[i]>='A' and list1[i]<='Z') or (list1[i]>='0' and list1[i]<='9')):
+                list2.append(list1[i])
+        # print(list2)
+        list2=''.join(list2)
+        list2=list2.lower()
+        # print(list2)
+        temp=list2[::-1]
+        # print(temp,list2)
+        if(temp==list2):
+            return True
+        else:
+            return False
+        
