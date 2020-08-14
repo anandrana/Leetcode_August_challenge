@@ -1,0 +1,22 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        dic={}
+        for i in range(len(s)):
+            if(s[i] not in dic):
+                dic[s[i]]=1
+            else:
+                dic[s[i]]+=1
+        
+        flag=0
+        count=0
+        for k,v in dic.items():
+            if(v%2==0):
+                count+=v
+            else:
+                count+=v-1
+                flag=1
+        if(flag==1):
+            return count+1
+        else:
+            return count
+        
