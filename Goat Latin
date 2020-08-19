@@ -1,0 +1,17 @@
+class Solution:
+    def toGoatLatin(self, S: str) -> str:
+        list1=S.split()
+        ans=''
+        vowel={'a','e','i','o','u','A','E','I','O','U'}
+        for i in range(len(list1)):
+            if(list1[i][0] in vowel):
+                temp=list1[i]+'ma'+'a'*(i+1)
+                ans+=temp+" "
+            else:
+                temp=list1[i][1:]+list1[i][0]+'ma'+'a'*(i+1)
+                ans+=temp+" "
+        t=ans.rstrip()
+        return t
+        # print(ans)
+        # print(list1)
+        
