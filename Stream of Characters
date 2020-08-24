@@ -1,0 +1,52 @@
+from collections import deque
+class StreamChecker:
+
+    def __init__(self, words: List[str]):
+        
+        self.stream=deque()
+        self.children={}
+        
+        for word in words:
+            a=word[::-1]
+            
+            def helper(c,table):
+                if c not in table:
+                    table[c]={}
+                
+                return table[c]
+            
+            table=self.children
+            for c in a:
+                table=helper(c,table)
+            table['@']={}
+            
+        # print(self.children)
+        
+            
+    def query(self, letter: str) -> bool:
+        
+        # print(self.children)
+        
+        self.stream.appendleft(letter)
+        
+        table=self.children
+        
+        def helper(c,table):
+            if c not in table:
+                return None
+            return table[c]
+        
+        for c in self.stream:
+            table=helper(c,table)
+            
+            if table is None:
+                return False
+            
+            if('@' in table):
+                return True
+        return False
+    
+# Your StreamChecker object will be instantiated and called as such:
+# obj = StreamChecker(words)
+# param_1 = obj.query(letter)
+
