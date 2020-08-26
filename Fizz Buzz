@@ -1,0 +1,16 @@
+class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        ans=deque()
+        while(n>0):
+            if(n%3==0 and n%5==0):
+                ans.appendleft("FizzBuzz")
+            elif(n%3==0):
+                ans.appendleft("Fizz")
+            elif(n%5==0):
+                ans.appendleft("Buzz")
+            else:
+                ans.appendleft(str(n))
+            n-=1
+        return ans
+    
+        
