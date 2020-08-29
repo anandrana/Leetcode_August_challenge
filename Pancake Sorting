@@ -1,0 +1,22 @@
+class Solution:
+    def pancakeSort(self, A: List[int]) -> List[int]:
+        
+        ans=[]
+        while(A):
+            y=max(A)
+            if(A[-1]==y):
+                A.pop(-1)
+                continue
+            x=A.index(y)
+            a=A[:x+1]
+            a.reverse()
+            A=a+A[x+1:]
+            ans.append(x+1)
+            ans.append(len(A))
+            A.reverse()
+            A.pop(-1)
+            # print(A)
+            
+        return ans
+    
+        
