@@ -1,0 +1,47 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
+        if root is None:
+            return 
+        
+        list1=[]
+        def bst(arr):
+            if len(arr)==0:
+                return None
+            root=TreeNode(arr[0])
+            x=arr.pop(0)
+            i=0
+            while(i<len(arr)):
+                if(arr[i]>x):
+                    break
+                i+=1
+            
+            root.left=bst(arr[:i])
+            root.right=bst(arr[i:])
+            
+            return root
+        
+        def preorder(root):
+            if root is None:
+                return None
+            list1.append(root.val)
+            preorder(root.left)
+            preorder(root.right)
+            
+        preorder(root)
+        # print(list1)
+        if(list1[0]==key):
+            return bst(list1[1:])
+        else:
+            for i in range(len(list1)):
+                if(list1[i]==key):
+                    list1=list1[:i]+list1[i+1:]
+                    break
+            # print(list1)
+            return bst(list1)
+            
